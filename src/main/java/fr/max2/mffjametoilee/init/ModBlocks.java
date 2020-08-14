@@ -1,74 +1,43 @@
 package fr.max2.mffjametoilee.init;
 
+import java.util.function.Supplier;
+
 import fr.max2.mffjametoilee.MFFJamEtoileeMod;
+import fr.max2.mffjametoilee.block.StabilizedStarBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Block.Properties;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 
-@EventBusSubscriber(modid = MFFJamEtoileeMod.MOD_ID, bus = Bus.MOD)
-@ObjectHolder(MFFJamEtoileeMod.MOD_ID)
 public class ModBlocks
 {
-	public static final Block
-		NONE = null;
+	public static final DeferredRegister<Block> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, MFFJamEtoileeMod.MOD_ID);
 	
-	@SubscribeEvent
-	public static void registerBlocks(RegistryEvent.Register<Block> event)
+	public static final RegistryObject<Block>
+		STABILIZED_STAR = register("stabilized_star", () -> new StabilizedStarBlock(Properties.create(Material.ROCK).hardnessAndResistance(50.0F, 200.0F)));
+	
+	static
 	{
-		event.getRegistry().registerAll(
-		);
+		item(STABILIZED_STAR);
 	}
 	
-	@SubscribeEvent
-	public static void registerItems(RegistryEvent.Register<Item> event)
+	private static <B extends Block> RegistryObject<B> register(String name, Supplier<B> block)
 	{
-		event.getRegistry().registerAll(items(ModItemGroups.MAIN));
+		return REGISTRY.register(name, block);
 	}
 	
-	@OnlyIn(Dist.CLIENT)
-	@SubscribeEvent
-	public static void registerRenders(FMLClientSetupEvent event)
+	private static RegistryObject<Item> item(RegistryObject<? extends Block> block)
 	{
-		//RenderTypeLookup.setRenderLayer(NONE, RenderType.getCutout());
+		return ModItems.REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), itemProp()));
 	}
 	
-	
-	private static <B extends Block> B name(String name, B block)
+	private static Item.Properties itemProp()
 	{
-	    block.setRegistryName(MFFJamEtoileeMod.MOD_ID, name);
-	    return block;
-	}
-	
-	private static Item[] items(ItemGroup group, Block... blocks)
-	{
-		Item[] items = new Item[blocks.length];
-		
-		for (int i = 0; i < blocks.length; i++)
-		{
-			items[i] = item(group, blocks[i]);
-		}
-		
-		return items;
-	}
-	
-	private static Item item(ItemGroup group, Block block)
-	{
-		return item(block, new BlockItem(block, new Item.Properties().group(group)));
-	}
-	
-	private static <I extends Item> I item(Block block, I item)
-	{
-		item.setRegistryName(block.getRegistryName());
-		return item;
+		return new Item.Properties().group(ModItemGroups.MAIN);
 	}
 	
 }

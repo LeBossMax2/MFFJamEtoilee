@@ -3,7 +3,9 @@ package fr.max2.mffjametoilee;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import fr.max2.mffjametoilee.init.ModBlocks;
 import fr.max2.mffjametoilee.init.ModItems;
+import fr.max2.mffjametoilee.init.ModTileEntities;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -20,6 +22,8 @@ public class MFFJamEtoileeMod
 	{
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 		ModItems.REGISTRY.register(modEventBus);
+		ModBlocks.REGISTRY.register(modEventBus);
+		ModTileEntities.REGISTRY.register(modEventBus);
 	}
 	
 	public static <T extends IForgeRegistryEntry<T>> List<T> filterRegistry(IForgeRegistry<T> registry)

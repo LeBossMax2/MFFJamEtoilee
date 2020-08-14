@@ -1,44 +1,40 @@
 package fr.max2.mffjametoilee.init;
 
+import java.util.function.Supplier;
+
 import fr.max2.mffjametoilee.MFFJamEtoileeMod;
+import fr.max2.mffjametoilee.tileentity.StabilizedStarTileEntity;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 
 @EventBusSubscriber(modid = MFFJamEtoileeMod.MOD_ID, bus = Bus.MOD)
-@ObjectHolder(MFFJamEtoileeMod.MOD_ID)
 public class ModTileEntities
 {
-	//public static final TileEntityType<EnergyStorageSpyTileEntity>
-	//	ENERGY_STORAGE_SPY = null;
-
-	@SubscribeEvent
-	public static void registerTiles(RegistryEvent.Register<TileEntityType<?>> event)
-	{
-		event.getRegistry().registerAll(
-			//name("energy_storage_spy", TileEntityType.Builder.create(EnergyStorageSpyTileEntity::new, ModBlocks.NONE))
-		);
-		
-	}
-
+public static final DeferredRegister<TileEntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, MFFJamEtoileeMod.MOD_ID);
+	
+	public static final RegistryObject<TileEntityType<StabilizedStarTileEntity>> STABILIZED_STAR = register("stabilized_star", () -> TileEntityType.Builder.<StabilizedStarTileEntity>create(StabilizedStarTileEntity::new, ModBlocks.STABILIZED_STAR.get()));
+	
 	@OnlyIn(Dist.CLIENT)
 	@SubscribeEvent
-	public static void registerRenderers(FMLClientSetupEvent event)
+	public static void registerRenders(FMLClientSetupEvent event)
 	{
+		
+		//ClientRegistry.bindTileEntitySpecialRenderer(StabilizedStarTileEntity.class, new tabilizedStarSpecialRenderer());
 		
 	}
 	
-	private static TileEntityType<?> name(String name, TileEntityType.Builder<?> builder)
+	private static <T extends TileEntity> RegistryObject<TileEntityType<T>> register(String name, Supplier<TileEntityType.Builder<T>> tile)
 	{
-		TileEntityType<?> type = builder.build(null);
-	    type.setRegistryName(MFFJamEtoileeMod.MOD_ID, name);
-	    return type;
+		return REGISTRY.register(name, () -> tile.get().build(null));
 	}
 	
 }

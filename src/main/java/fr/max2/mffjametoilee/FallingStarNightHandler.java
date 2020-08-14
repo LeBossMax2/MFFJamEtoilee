@@ -23,7 +23,7 @@ public class FallingStarNightHandler
 	private static final List<IChunk> OVERWORLD_CHUNKS = new ArrayList<>();
 	private static final Random STAR_RAND = new Random();
 	private static final float EVENT_CHANGE = 0.2f;
-	private static final float STAR_SPAWN_CHANCE = 0.1f;
+	private static final float STAR_SPAWN_CHANCE = 0.001f;
 	private static boolean wasNight = false;
 	private static boolean areStarsFalling = false; //TODO save / update on server start / quit
 
@@ -87,8 +87,8 @@ public class FallingStarNightHandler
 	
 	private static boolean spawnStar(IChunk chunk)
 	{
-		int x = STAR_RAND.nextInt(16);
-		int z = STAR_RAND.nextInt(16);
+		int x = STAR_RAND.nextInt(16) + chunk.getPos().getXStart();
+		int z = STAR_RAND.nextInt(16) + chunk.getPos().getZStart();
 		
 		World world = chunk.getWorldForge().getWorld();
 		
