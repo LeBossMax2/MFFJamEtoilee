@@ -6,6 +6,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 import fr.max2.mffjametoilee.MFFJamEtoileeMod;
+import fr.max2.mffjametoilee.network.FallingStarsStateMessage;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
@@ -34,7 +35,7 @@ public class ModNetwork
 	@SubscribeEvent
 	public static void registerPackets(FMLCommonSetupEvent event)
 	{
-		
+		registerClient(FallingStarsStateMessage.class, FallingStarsStateMessage::encode, FallingStarsStateMessage::decode, FallingStarsStateMessage::onReceived);
 	}
 	
 	private static int lastIndex = 0;
