@@ -3,6 +3,8 @@ package fr.max2.mffjametoilee.data;
 import javax.annotation.Nonnull;
 
 import fr.max2.mffjametoilee.MFFJamEtoileeMod;
+import fr.max2.mffjametoilee.init.ModBlocks;
+import fr.max2.mffjametoilee.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
@@ -21,7 +23,9 @@ public class ModItemModelProvider extends ItemModelProvider
 	@Override
 	protected void registerModels()
 	{
-		
+		simpleItem(ModItems.MINIATURE_STAR.get());
+		simpleItem(ModItems.FALLEN_STAR.get());
+		simpleBlock(ModBlocks.STABILIZED_STAR.get());
 	}
 	
 	protected void simpleItem(IForgeRegistryEntry<?> entry)

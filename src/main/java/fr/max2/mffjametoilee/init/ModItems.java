@@ -15,7 +15,7 @@ public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(Fo
 	
 	public static final RegistryObject<Item>
 		FALLEN_STAR = register("fallen_star", () -> new Item(prop())),
-		MIGNATURE_STAR = register("mignature_star", () -> new Item(prop()));
+		MINIATURE_STAR = register("miniature_star", () -> new Item(prop()));
 	
 	private static Properties prop()
 	{

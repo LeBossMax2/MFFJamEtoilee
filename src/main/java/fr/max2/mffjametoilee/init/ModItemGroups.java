@@ -14,7 +14,7 @@ public class ModItemGroups
 		@OnlyIn(Dist.CLIENT)
 		public ItemStack createIcon()
 		{
-			return new ItemStack(ModItems.MIGNATURE_STAR.get());
+			return new ItemStack(ModItems.MINIATURE_STAR.get());
 		}
 	};
 }

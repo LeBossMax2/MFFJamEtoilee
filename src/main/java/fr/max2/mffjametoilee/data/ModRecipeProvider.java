@@ -24,7 +24,7 @@ public class ModRecipeProvider extends RecipeProvider
 	protected void registerRecipes(Consumer<IFinishedRecipe> consumer)
 	{
 		//Items
-		ShapelessRecipeBuilder.shapelessRecipe(ModItems.MIGNATURE_STAR.get())
+		ShapelessRecipeBuilder.shapelessRecipe(ModItems.MINIATURE_STAR.get())
 			.addIngredient(ModItems.FALLEN_STAR.get())
 			.addIngredient(ModItems.FALLEN_STAR.get())
 			.addIngredient(ModItems.FALLEN_STAR.get())
@@ -37,10 +37,10 @@ public class ModRecipeProvider extends RecipeProvider
 			.patternLine("GGG")
 			.patternLine("GSG")
 			.patternLine("OOO")
-			.key('S', ModItems.MIGNATURE_STAR.get())
+			.key('S', ModItems.MINIATURE_STAR.get())
 			.key('G', Blocks.GLASS)
 			.key('O', Blocks.OBSIDIAN)
-			.addCriterion("has_mignature_star", this.hasItem(ModItems.MIGNATURE_STAR.get()))
+			.addCriterion("has_mignature_star", this.hasItem(ModItems.MINIATURE_STAR.get()))
 			.build(consumer);
 	}
 	

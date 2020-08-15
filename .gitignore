@@ -18,5 +18,8 @@ out
 build
 .gradle
 
+# generated resources
+src/generated
+
 # run
 run

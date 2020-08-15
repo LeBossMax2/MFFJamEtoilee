@@ -18,8 +18,6 @@ public class ModDataProviders
 
         if (event.includeServer())
         {
-            gen.addProvider(new ModBlockTagsProvider(gen));
-            gen.addProvider(new ModItemTagsProvider(gen));
             gen.addProvider(new ModRecipeProvider(gen));
             gen.addProvider(new ModLootTableProvider(gen));
         }

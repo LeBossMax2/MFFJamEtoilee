@@ -11,12 +11,11 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 import fr.max2.mffjametoilee.MFFJamEtoileeMod;
+import fr.max2.mffjametoilee.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.LootTableProvider;
 import net.minecraft.data.loot.BlockLootTables;
-import net.minecraft.data.loot.EntityLootTables;
-import net.minecraft.entity.EntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootParameterSet;
 import net.minecraft.world.storage.loot.LootParameterSets;
@@ -29,9 +28,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ModLootTableProvider extends LootTableProvider
 {
 	private final List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, Builder>>>, LootParameterSet>> tables = ImmutableList.of(
-		Pair.of(() -> this::fishingLootTables, LootParameterSets.FISHING),
-		Pair.of(() -> this::chestLootTables, LootParameterSets.CHEST),
-		Pair.of(ModEntityLootTables::new, LootParameterSets.ENTITY),
 		Pair.of(ModBlockLootTables::new, LootParameterSets.BLOCK));
 
 
@@ -55,37 +51,12 @@ public class ModLootTableProvider extends LootTableProvider
 		});
 	}
 	
-	private void fishingLootTables(BiConsumer<ResourceLocation, Builder> tableConsumer)
-	{
-		
-	}
-	
-	private void chestLootTables(BiConsumer<ResourceLocation, Builder> tableConsumer)
-	{
-		
-	}
-	
-	private static class ModEntityLootTables extends EntityLootTables
-	{
-		@Override
-		protected void addTables()
-		{
-			
-		}
-		
-		@Override
-		protected Iterable<EntityType<?>> getKnownEntities()
-		{
-			return MFFJamEtoileeMod.filterRegistry(ForgeRegistries.ENTITIES);
-		}
-	}
-	
 	private static class ModBlockLootTables extends BlockLootTables
 	{
 		@Override
 		protected void addTables()
 		{
-			
+			registerDropSelfLootTable(ModBlocks.STABILIZED_STAR.get());
 		}
 		
 		@Override
