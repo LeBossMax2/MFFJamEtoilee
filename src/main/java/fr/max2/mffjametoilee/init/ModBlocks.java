@@ -11,6 +11,8 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -33,6 +35,7 @@ public class ModBlocks
 	}
 	
 	@SubscribeEvent
+	@OnlyIn(Dist.CLIENT)
 	public static void registerRenders(FMLClientSetupEvent event)
 	{
 		RenderTypeLookup.setRenderLayer(STABILIZED_STAR.get(), RenderType.getCutout());
