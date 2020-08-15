@@ -28,7 +28,7 @@ public class FallingStarNightHandler
 	private static final List<IChunk> OVERWORLD_CHUNKS = new ArrayList<>();
 	private static final Random STAR_RAND = new Random();
 	private static final float EVENT_CHANGE = 0.2f;
-	private static final float STAR_SPAWN_CHANCE = 0.001f;
+	private static final float STAR_SPAWN_CHANCE = 0.0004f;
 	private static boolean wasNight = false;
 	private static ThreadLocal<Boolean> areStarsFalling = ThreadLocal.withInitial(() -> false); //TODO save / update on server start / quit
 
@@ -121,6 +121,8 @@ public class FallingStarNightHandler
 		World world = chunk.getWorldForge().getWorld();
 		
 		ItemEntity starItem = new ItemEntity(world, x, world.getActualHeight(), z, new ItemStack(ModItems.FALLEN_STAR.get()));
+		starItem.setNoPickupDelay();
+		starItem.lifespan = 2000; // 1 min
 		
 		return world.addEntity(starItem);
 	}
