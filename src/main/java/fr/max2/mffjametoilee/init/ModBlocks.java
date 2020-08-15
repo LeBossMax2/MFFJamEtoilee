@@ -7,6 +7,7 @@ import fr.max2.mffjametoilee.block.StabilizedStarBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Block.Properties;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.BlockItem;
@@ -27,7 +28,7 @@ public class ModBlocks
 	public static final DeferredRegister<Block> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, MFFJamEtoileeMod.MOD_ID);
 	
 	public static final RegistryObject<Block>
-		STABILIZED_STAR = register("stabilized_star", () -> new StabilizedStarBlock(Properties.create(Material.ROCK).hardnessAndResistance(50.0F, 200.0F)));
+		STABILIZED_STAR = register("stabilized_star", () -> new StabilizedStarBlock(Properties.create(Material.GLASS, MaterialColor.DIAMOND).hardnessAndResistance(3.0F).lightValue(15).notSolid()));
 	
 	static
 	{
