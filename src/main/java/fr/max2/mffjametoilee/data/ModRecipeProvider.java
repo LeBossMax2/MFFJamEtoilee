@@ -10,7 +10,8 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
 import net.minecraft.data.ShapedRecipeBuilder;
-import net.minecraft.data.ShapelessRecipeBuilder;
+import net.minecraft.item.Items;
+import net.minecraftforge.common.Tags;
 
 public class ModRecipeProvider extends RecipeProvider
 {
@@ -24,12 +25,25 @@ public class ModRecipeProvider extends RecipeProvider
 	protected void registerRecipes(Consumer<IFinishedRecipe> consumer)
 	{
 		//Items
-		ShapelessRecipeBuilder.shapelessRecipe(ModItems.MINIATURE_STAR.get())
-			.addIngredient(ModItems.FALLEN_STAR.get())
-			.addIngredient(ModItems.FALLEN_STAR.get())
-			.addIngredient(ModItems.FALLEN_STAR.get())
-			.addIngredient(ModItems.FALLEN_STAR.get())
+		ShapedRecipeBuilder.shapedRecipe(ModItems.MINIATURE_STAR.get())
+			.patternLine(" S ")
+			.patternLine("SDS")
+			.patternLine(" S ")
+			.key('S', ModItems.FALLEN_STAR.get())
+			.key('D', Tags.Items.GEMS_DIAMOND)
 			.addCriterion("has_fallen_star", hasItem(ModItems.FALLEN_STAR.get()))
+			.build(consumer);
+		
+		ShapedRecipeBuilder.shapedRecipe(ModItems.STAR_CANNON.get())
+			.patternLine("ISI")
+			.patternLine("OCO")
+			.patternLine(" I ")
+			.key('S', ModItems.MINIATURE_STAR.get())
+			.key('O', Tags.Items.OBSIDIAN)
+			.key('C', Items.CROSSBOW)
+			.key('I', Tags.Items.INGOTS_IRON)
+			.addCriterion("has_mignature_star", this.hasItem(ModItems.MINIATURE_STAR.get()))
+			.addCriterion("has_crossbow", this.hasItem(Items.CROSSBOW))
 			.build(consumer);
 		
 		//Blocks

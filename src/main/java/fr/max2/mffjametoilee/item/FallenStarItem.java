@@ -20,7 +20,7 @@ public class FallenStarItem extends Item
 		if (random.nextFloat() < particleChance)
 		{
 			Vec3d motion = entity.getMotion();
-			entity.world.addOptionalParticle(ParticleTypes.FIREWORK, true, entity.getPosX(), entity.getPosY() + 0.3D, entity.getPosZ(), -0.8D * motion.x + random.nextFloat() * 0.1D - 0.05D, -0.8D * motion.y + random.nextFloat() * 0.1D + 0.02D, -0.8D * motion.z + random.nextFloat() * 0.1D - 0.05D);
+			entity.world.addOptionalParticle(ParticleTypes.FIREWORK, true, entity.getPosX(), entity.getPosY() + 0.3D, entity.getPosZ(), -0.5D * motion.x + random.nextFloat() * 0.1D - 0.05D, -0.5D * motion.y + random.nextFloat() * 0.1D + 0.02D, -0.5D * motion.z + random.nextFloat() * 0.1D - 0.05D);
 		}
 		return false;
 	}

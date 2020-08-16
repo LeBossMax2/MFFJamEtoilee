@@ -45,6 +45,7 @@ public class ModLanguagesProvider implements IDataProvider
     	// Items
 		add(ModItems.FALLEN_STAR.get(), "Fallen Star", "Etoile filante");
 		add(ModItems.MINIATURE_STAR.get(), "Miniature Star", "Etoile miniature");
+		add(ModItems.STAR_CANNON.get(), "Star Cannon", "Canon à étoiles");
     	
     	// ItemGroups
     	add(ModItemGroups.MAIN, "MFFJamEtoilée", "MFFJamEtoilée");

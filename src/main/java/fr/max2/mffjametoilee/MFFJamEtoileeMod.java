@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import fr.max2.mffjametoilee.init.ModBlocks;
+import fr.max2.mffjametoilee.init.ModEntities;
 import fr.max2.mffjametoilee.init.ModItems;
 import fr.max2.mffjametoilee.init.ModTileEntities;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -23,6 +24,7 @@ public class MFFJamEtoileeMod
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 		ModItems.REGISTRY.register(modEventBus);
 		ModBlocks.REGISTRY.register(modEventBus);
+		ModEntities.REGISTRY.register(modEventBus);
 		ModTileEntities.REGISTRY.register(modEventBus);
 	}
 	
