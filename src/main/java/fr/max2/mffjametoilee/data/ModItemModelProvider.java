@@ -9,7 +9,9 @@ import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ExistingFileHelper;
+import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
+import net.minecraftforge.client.model.generators.ModelBuilder.Perspective;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 public class ModItemModelProvider extends ItemModelProvider
@@ -25,12 +27,22 @@ public class ModItemModelProvider extends ItemModelProvider
 	{
 		simpleItem(ModItems.MINIATURE_STAR.get());
 		simpleItem(ModItems.FALLEN_STAR.get());
+		cannonItem(ModItems.STAR_CANNON.get());
 		simpleBlock(ModBlocks.STABILIZED_STAR.get());
 	}
 	
-	protected void simpleItem(IForgeRegistryEntry<?> entry)
+	protected ItemModelBuilder simpleItem(IForgeRegistryEntry<?> entry)
 	{
-		singleTexture(name(entry), mcLoc("item/generated"), "layer0", itemTexture(entry));
+		return singleTexture(name(entry), mcLoc("item/generated"), "layer0", itemTexture(entry));
+	}
+	
+	protected ItemModelBuilder cannonItem(IForgeRegistryEntry<?> entry)
+	{
+		return singleTexture(name(entry), mcLoc("item/handheld"), "layer0", itemTexture(entry))
+			.transforms()
+				.transform(Perspective.THIRDPERSON_RIGHT).rotation(0,-90, 45).translation(0.0F, 3.0F, 0.5F).scale(1.0F, 1.0F, 1.0F).end()
+				.transform(Perspective.THIRDPERSON_LEFT ).rotation(0, 90,-45).translation(0.0F, 3.0F, 0.5F).scale(1.0F, 1.0F, 1.0F).end()
+			.end();
 	}
 	
 	protected void simpleBlock(Block block)
