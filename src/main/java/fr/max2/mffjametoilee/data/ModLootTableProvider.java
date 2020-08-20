@@ -56,7 +56,7 @@ public class ModLootTableProvider extends LootTableProvider
 		@Override
 		protected void addTables()
 		{
-			registerDropSelfLootTable(ModBlocks.STABILIZED_STAR.get());
+			registerDropSelfLootTable(ModBlocks.STAR_BEACON.get());
 		}
 		
 		@Override

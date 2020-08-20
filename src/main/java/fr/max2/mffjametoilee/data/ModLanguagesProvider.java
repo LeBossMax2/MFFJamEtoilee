@@ -6,6 +6,7 @@ import java.util.List;
 
 import fr.max2.mffjametoilee.MFFJamEtoileeMod;
 import fr.max2.mffjametoilee.init.ModBlocks;
+import fr.max2.mffjametoilee.init.ModEntities;
 import fr.max2.mffjametoilee.init.ModItemGroups;
 import fr.max2.mffjametoilee.init.ModItems;
 import net.minecraft.block.Block;
@@ -40,7 +41,7 @@ public class ModLanguagesProvider implements IDataProvider
 	protected void addTranslations()
     {
 		// Blocks
-		add(ModBlocks.STABILIZED_STAR.get(), "Stabilized Star", "Etoile stabilisée");
+		add(ModBlocks.STAR_BEACON.get(), "Stabilized Star", "Etoile stabilisée");
 
     	// Items
 		add(ModItems.FALLEN_STAR.get(), "Fallen Star", "Etoile filante");
@@ -49,6 +50,9 @@ public class ModLanguagesProvider implements IDataProvider
     	
     	// ItemGroups
     	add(ModItemGroups.MAIN, "MFFJamEtoilée", "MFFJamEtoilée");
+    	
+    	// Entities
+    	add(ModEntities.STAR_PROJECTILE.get(), "Star Projectile", "Projectile étoilé");
     }
 	
 	@Override

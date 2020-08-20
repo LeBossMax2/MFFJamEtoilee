@@ -47,7 +47,7 @@ public class ModRecipeProvider extends RecipeProvider
 			.build(consumer);
 		
 		//Blocks
-		ShapedRecipeBuilder.shapedRecipe(ModBlocks.STABILIZED_STAR.get())
+		ShapedRecipeBuilder.shapedRecipe(ModBlocks.STAR_BEACON.get())
 			.patternLine("GGG")
 			.patternLine("GSG")
 			.patternLine("OOO")

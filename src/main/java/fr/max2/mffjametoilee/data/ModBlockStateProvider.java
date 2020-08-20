@@ -22,7 +22,7 @@ public class ModBlockStateProvider extends BlockStateProvider
 	@Override
 	protected void registerStatesAndModels()
 	{
-		simpleBlock(ModBlocks.STABILIZED_STAR.get(), models().getExistingFile(modelName(ModBlocks.STABILIZED_STAR.get())));
+		simpleBlock(ModBlocks.STAR_BEACON.get(), models().getExistingFile(modelName(ModBlocks.STAR_BEACON.get())));
 	}
 	
 	@Override

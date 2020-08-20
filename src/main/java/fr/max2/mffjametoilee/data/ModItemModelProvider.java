@@ -28,7 +28,7 @@ public class ModItemModelProvider extends ItemModelProvider
 		simpleItem(ModItems.MINIATURE_STAR.get());
 		simpleItem(ModItems.FALLEN_STAR.get());
 		cannonItem(ModItems.STAR_CANNON.get());
-		simpleBlock(ModBlocks.STABILIZED_STAR.get());
+		simpleBlock(ModBlocks.STAR_BEACON.get());
 	}
 	
 	protected ItemModelBuilder simpleItem(IForgeRegistryEntry<?> entry)

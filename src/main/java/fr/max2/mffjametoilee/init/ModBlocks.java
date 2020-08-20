@@ -3,7 +3,7 @@ package fr.max2.mffjametoilee.init;
 import java.util.function.Supplier;
 
 import fr.max2.mffjametoilee.MFFJamEtoileeMod;
-import fr.max2.mffjametoilee.block.StabilizedStarBlock;
+import fr.max2.mffjametoilee.block.StarBeaconBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Block.Properties;
 import net.minecraft.block.material.Material;
@@ -28,18 +28,18 @@ public class ModBlocks
 	public static final DeferredRegister<Block> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, MFFJamEtoileeMod.MOD_ID);
 	
 	public static final RegistryObject<Block>
-		STABILIZED_STAR = register("stabilized_star", () -> new StabilizedStarBlock(Properties.create(Material.GLASS, MaterialColor.DIAMOND).hardnessAndResistance(3.0F).lightValue(15).notSolid()));
+		STAR_BEACON = register("star_beacon", () -> new StarBeaconBlock(Properties.create(Material.GLASS, MaterialColor.DIAMOND).hardnessAndResistance(3.0F).lightValue(15).notSolid()));
 	
 	static
 	{
-		item(STABILIZED_STAR);
+		item(STAR_BEACON);
 	}
 	
 	@SubscribeEvent
 	@OnlyIn(Dist.CLIENT)
 	public static void registerRenders(FMLClientSetupEvent event)
 	{
-		RenderTypeLookup.setRenderLayer(STABILIZED_STAR.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(STAR_BEACON.get(), RenderType.getCutout());
 	}
 	
 	private static <B extends Block> RegistryObject<B> register(String name, Supplier<B> block)

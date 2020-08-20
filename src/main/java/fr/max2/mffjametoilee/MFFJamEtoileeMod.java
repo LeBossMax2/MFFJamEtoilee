@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import fr.max2.mffjametoilee.init.ModBlocks;
+import fr.max2.mffjametoilee.init.ModContainers;
 import fr.max2.mffjametoilee.init.ModEntities;
 import fr.max2.mffjametoilee.init.ModItems;
 import fr.max2.mffjametoilee.init.ModTileEntities;
@@ -26,6 +27,7 @@ public class MFFJamEtoileeMod
 		ModBlocks.REGISTRY.register(modEventBus);
 		ModEntities.REGISTRY.register(modEventBus);
 		ModTileEntities.REGISTRY.register(modEventBus);
+		ModContainers.REGISTRY.register(modEventBus);
 	}
 	
 	public static <T extends IForgeRegistryEntry<T>> List<T> filterRegistry(IForgeRegistry<T> registry)
