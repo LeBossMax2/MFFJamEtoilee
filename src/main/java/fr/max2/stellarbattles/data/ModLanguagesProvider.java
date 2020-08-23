@@ -49,10 +49,17 @@ public class ModLanguagesProvider implements IDataProvider
 		add(ModItems.STAR_CANNON.get(), "Star Cannon", "Canon à étoiles");
     	
     	// ItemGroups
-    	add(ModItemGroups.MAIN, "MFFJamEtoilée", "MFFJamEtoilée");
+    	add(ModItemGroups.MAIN, "Stellar Battles", "Stellar Battles");
     	
     	// Entities
     	add(ModEntities.STAR_PROJECTILE.get(), "Star Projectile", "Projectile étoilé");
+    	
+    	// Commands
+    	add(StellarBattlesMod.MOD_ID + ".command.setstarsfalling.start", "The stars begin falling from the sky !", "Les étoiles commencent à tomber du ciel !");
+    	add(StellarBattlesMod.MOD_ID + ".command.setstarsfalling.stop", "The stars cease falling from the sky !", "Les étoiles cessent de tomber du ciel !");
+    	add(StellarBattlesMod.MOD_ID + ".command.setstarsfalling.error.alreadystarted", "The stars are already falling from the sky", "Les étoiles tombent déjà du ciel !");
+    	add(StellarBattlesMod.MOD_ID + ".command.setstarsfalling.error.alreadystopped", "The stars already ceased falling from the sky !", "Les étoiles ont déja cessé de tomber du ciel !");
+    	add(StellarBattlesMod.MOD_ID + ".command.setstarsfalling.error.day", "Cannot set stars falling at daytime", "Impossible de faire tomber les étoiles de jour");
     }
 	
 	@Override

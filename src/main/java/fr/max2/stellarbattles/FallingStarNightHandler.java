@@ -33,7 +33,7 @@ public class FallingStarNightHandler
 	private static ThreadLocal<Boolean> areStarsFalling = ThreadLocal.withInitial(() -> false); //TODO save / update on server start / quit
 
 	@SubscribeEvent
-	public static void OnChunkLoaded(ChunkEvent.Load event)
+	public static void onChunkLoaded(ChunkEvent.Load event)
 	{
 		IChunk chunk = event.getChunk();
 		IWorld world = chunk.getWorldForge();
@@ -44,7 +44,7 @@ public class FallingStarNightHandler
 	}
 
 	@SubscribeEvent
-	public static void OnChunkUnloaded(ChunkEvent.Unload event)
+	public static void onChunkUnloaded(ChunkEvent.Unload event)
 	{
 		IChunk chunk = event.getChunk();
 		IWorld world = chunk.getWorldForge();
@@ -64,13 +64,15 @@ public class FallingStarNightHandler
 		areStarsFalling.set(falling);
 	}
 	
-	private static void updateFallingState(boolean falling)
+	public static boolean updateFallingState(boolean falling)
 	{
 		if (areStarsFalling() != falling)
 		{
 			setStarsFalling(falling);
 			ModNetwork.CHANNEL.send(PacketDistributor.ALL.noArg(), new FallingStarsStateMessage(falling));
+			return true;
 		}
+		return false;
 	}
 	
 	private static void updateFallingStarsState()
