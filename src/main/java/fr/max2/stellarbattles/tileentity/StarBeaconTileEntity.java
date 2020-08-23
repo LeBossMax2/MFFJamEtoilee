@@ -222,7 +222,7 @@ public class StarBeaconTileEntity extends TileEntity implements INamedContainerP
 		{
 			double range = this.levels * 10 + 10;
 			
-			int effectDuration = (9 + this.levels * 2) * 20;
+			int effectDuration = (11 + this.levels * 2) * 20;
 			AxisAlignedBB effectArea = (new AxisAlignedBB(this.pos)).grow(range).expand(0.0D, this.world.getHeight(), 0.0D);
 			
 			for (PlayerEntity p : this.world.getEntitiesWithinAABB(PlayerEntity.class, effectArea))
