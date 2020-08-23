@@ -14,8 +14,8 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 version = '0.1'
-group = 'fr.max2.mffjametoilee' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'mffjametoilee'
+group = 'fr.max2.stellarbattles' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'stellarbattles'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
@@ -43,7 +43,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                mffjametoilee {
+                stellarbattles {
                     source sourceSets.main
                 }
             }
@@ -59,7 +59,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                mffjametoilee {
+                stellarbattles {
                     source sourceSets.main
                 }
             }
@@ -74,10 +74,10 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'mffjametoilee', '--all', '--output', file('src/generated/resources/'), '--existing', sourceSets.main.resources.srcDirs[0]
+            args '--mod', 'stellarbattles', '--all', '--output', file('src/generated/resources/'), '--existing', sourceSets.main.resources.srcDirs[0]
 
             mods {
-                mffjametoilee {
+                stellarbattles {
                     source sourceSets.main
                 }
             }
@@ -119,7 +119,7 @@ dependencies {
 jar {
     manifest {
         attributes([
-            "Specification-Title": "mffjametoilee",
+            "Specification-Title": "stellarbattles",
             "Specification-Vendor": "LeBossMax2",
             "Specification-Version": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,
